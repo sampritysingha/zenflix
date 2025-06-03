@@ -20,7 +20,7 @@ popcorn_buttons = [
 ]
 
 # Load animated background
-gif_path = r"assets\film.gif"
+gif_path = "assets\film.gif"
 with open(gif_path, "rb") as f:
     gif_base64 = base64.b64encode(f.read()).decode("utf-8")
 
