@@ -39,7 +39,7 @@ def render():
     )
 
 
-    img_path = "assets\therbg.jpg"
+    img_path = "assets/therbg.jpg"
     with open(img_path, "rb") as img_file:
         img_base64 = base64.b64encode(img_file.read()).decode()
 

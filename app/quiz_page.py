@@ -35,7 +35,7 @@ def render():
         unsafe_allow_html=True
     )
 
-    img_path = "assets\quizbg.jpg"
+    img_path = "assets/quizbg.jpg"
     with open(img_path, "rb") as img_file:
         img_base64 = base64.b64encode(img_file.read()).decode()
 

@@ -13,7 +13,7 @@ from src.zodiac.zodiac_generator import assign_zodiac_roles, load_movie_data
 def render():
     df = load_movie_data()
 
-    img_path = "assets\night.jpg"
+    img_path = "assets/night.jpg"
     with open(img_path, "rb") as img_file:
         img_base64 = base64.b64encode(img_file.read()).decode()
         
