@@ -3,14 +3,14 @@ import os
 
 def load_movies_data():
     """Loads the cleaned movie data used for top movies by director and genre-based queries."""
-    data_path = os.path.join("data", "processed", r"c:\Users\sampr\OneDrive\Documents\zenflix\data\processed\movies_cleaned_final.csv")
+    data_path = os.path.join("data", "processed", "data/processed/movies_cleaned_final.csv")
     if not os.path.exists(data_path):
         print(f"File not found: {data_path}")
         return pd.DataFrame()
     return pd.read_csv(data_path)
 
 
-def load_director_stats(path=r'C:\Users\sampr\OneDrive\Documents\zenflix\data\processed\director_stats.csv'):
+def load_director_stats(path="data/processed/director_stats.csv"):
     """Loads director statistics from the processed data folder."""
     try:
         df = pd.read_csv(path)

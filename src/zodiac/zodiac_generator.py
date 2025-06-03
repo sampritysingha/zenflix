@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Load the cleaned movies dataset
-def load_movie_data(path=r'C:\Users\sampr\OneDrive\Documents\zenflix\data\processed\movies_cleaned_final.csv'):
+def load_movie_data(path='data/processed/movies_cleaned_final.csv'):
     return pd.read_csv(path)
 
 # TF-IDF based genre similarity

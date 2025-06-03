@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load and preprocess movie data
-def load_movie_data(csv_path=r'C:\Users\sampr\OneDrive\Documents\zenflix\data\processed\movies_cleaned_final.csv'):
+def load_movie_data(csv_path='data/processed/movies_cleaned_final.csv'):
     df = pd.read_csv(csv_path)
 
     # Ensure sentiment_polarity column exists, else create neutral sentiment (0)

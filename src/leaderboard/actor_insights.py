@@ -16,7 +16,7 @@ def load_movies_data(path):
         return pd.DataFrame()
 
 # === 1. load_actor_stats ===
-def load_actor_stats(path=r"C:\Users\sampr\OneDrive\Documents\zenflix\data\processed\movies_cleaned_final.csv"):
+def load_actor_stats(path="data/processed/movies_cleaned_final.csv"):
     """
     Loads actor statistics from the movie dataset.
     Returns a DataFrame with actor-level aggregates.
@@ -102,7 +102,7 @@ def get_most_frequent_collaborators(actor_df, top_n=5):
 
 # === OPTIONAL: CLI Debugging ===
 if __name__ == "__main__":
-    df_stats = load_actor_stats(r"C:\Users\sampr\OneDrive\Documents\zenflix\data\processed\movies_cleaned_final.csv")
+    df_stats = load_actor_stats("data/processed/movies_cleaned_final.csv")
     print(df_stats.head(10))
     print("\nTop Rated:\n", get_top_actors_by_rating(df_stats))
     print("\nVersatile:\n", get_versatile_actors(df_stats))

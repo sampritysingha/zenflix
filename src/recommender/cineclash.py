@@ -3,8 +3,8 @@ import pandas as pd
 import random
 
 # Load the datasets
-movies_df = pd.read_csv(r"C:\Users\sampr\OneDrive\Documents\zenflix\data\processed\movies_cleaned_final.csv")
-directors_df = pd.read_csv(r"C:\Users\sampr\OneDrive\Documents\zenflix\data\processed\director_stats.csv")
+movies_df = pd.read_csv("data/processed/movies_cleaned_final.csv")
+directors_df = pd.read_csv("data/processed/director_stats.csv")
 
 # Filter function based on mood
 mood_keywords = {
