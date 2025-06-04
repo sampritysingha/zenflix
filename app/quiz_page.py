@@ -229,7 +229,7 @@ def render():
     """, unsafe_allow_html=True)
 
     st.markdown("""
-    <h1 style='text-align: center;'>🍿 Which Movie Are You?</h1>
+    <h1 style='text-align: center;'>Which Movie Are You?🍿</h1>
     <p style='text-align: center;'>Unravel your cinema soul with this fun quiz! 🎭🎬</p>
     """, unsafe_allow_html=True)
 

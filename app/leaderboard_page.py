@@ -84,8 +84,6 @@ def cached_get_most_frequent_collaborators(actor_df):
 # === UI Renderer ===
 def render():
     st.title("🏆 Zenflix Leaderboards")
-    st.markdown("<h1 style='color:#FBBF24;'>Zenflix Leaderboards🏆</h1>", unsafe_allow_html=True)
-
     col1, col2 = st.columns([1, 6])
     with col1:
         st.markdown(

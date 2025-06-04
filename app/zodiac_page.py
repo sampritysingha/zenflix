@@ -162,8 +162,8 @@ def render():
 
     # Title
     st.markdown("""
-        <h1 style='text-align: center; font-size: 3.5rem;'>🔮 Discover Your Cinematic Zodiac 🔮</h1>
-        <p style='text-align: center; font-size: 1.3rem;'>What do your favorite films say about your inner star map? Give us 3 movies which resonate with you!</p>
+        <h1 style='text-align: center; font-size: 3.5rem;'>Discover Your Cinematic Zodiac 🔮</h1>
+        <p style='text-align: center; font-size: 1.3rem;'>What do your favorite films say about your inner star map? Give us 3 movies which resonate with you, to get similar movie recommendations!</p>
     """, unsafe_allow_html=True)
     st.markdown("---")
 
@@ -190,7 +190,7 @@ def render():
                 <li><b>Director:</b> {data['Director']}</li>
                 <li><b>Genres:</b> {data['Genre']}</li>
             </ul>
-            <p><b>Reasoning:</b><br>{data['Reason for Genre Similarity']}<br>{data['Reason for Sentiment Match']}</p>
+            <p><b>Reasoning:</b>{data['Reason for Sentiment Match']}</p>
             <p>{data['Description']}</p>
         </div>
         """, unsafe_allow_html=True)

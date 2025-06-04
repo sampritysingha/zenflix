@@ -72,7 +72,7 @@ st.markdown(
     }}
 
     .popcorn-button img {{
-        width: 100px;
+        width: 95px;
         height: auto;
         border-radius: 12px;
         box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
@@ -96,10 +96,10 @@ st.markdown(
     }}
 
     /* Exact positions for larger screens */
-    .popcorn1 {{ top: -40px; left: -10px; }}
-    .popcorn2 {{ top: -100px; left: 90px; }}
-    .popcorn3 {{ top: -130px; left: 190px; }}
-    .popcorn4 {{ top: -80px; left: 290px; }}
+    .popcorn1 {{ top: -35px; left: -10px; }}
+    .popcorn2 {{ top: -90px; left: 90px; }}
+    .popcorn3 {{ top: -120px; left: 180px; }}
+    .popcorn4 {{ top: -80px; left: 270px; }}
 
     .title-container {{
         margin-top: 80px;
