@@ -3,10 +3,11 @@ import pandas as pd
 import sys
 import os
 import ast 
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+from src.utils.data_loader import load_movie_data, load_director_stats
 from src.leaderboard.director_popularity import (
-    load_director_stats,
     get_top_directors,
     get_underrated_legends,
     get_most_prolific,
@@ -14,7 +15,6 @@ from src.leaderboard.director_popularity import (
     get_popular_and_critically_acclaimed,
     get_hidden_gems,
     get_top_movies_by_genre,
-    load_movies_data
 )
 
 from src.leaderboard.actor_insights import (
@@ -24,7 +24,6 @@ from src.leaderboard.actor_insights import (
     get_most_liked_actors,
     get_most_frequent_collaborators
 )
-
 # === ✅ Caching Layer ===
 @st.cache_data
 def cached_load_director_stats():
@@ -32,7 +31,7 @@ def cached_load_director_stats():
 
 @st.cache_data
 def cached_load_movies_data():
-    return load_movies_data()
+    return load_movie_data()
 
 @st.cache_data
 def cached_load_actor_stats():
@@ -82,35 +81,37 @@ def cached_get_most_liked_actors(actor_df):
 def cached_get_most_frequent_collaborators(actor_df):
     return get_most_frequent_collaborators(actor_df)
 
-
+# === UI Renderer ===
 def render():
+    st.title("🏆 Zenflix Leaderboards")
     st.markdown("<h1 style='color:#FBBF24;'>Zenflix Leaderboards🏆</h1>", unsafe_allow_html=True)
+
     col1, col2 = st.columns([1, 6])
     with col1:
-      st.markdown(
-        """
-        <a href="?page=home" style="text-decoration: none;">
-            <button style="
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                background-color: white;
-                color: black;
-                border: none;
-                cursor: pointer;
-                font-size: 22px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                box-shadow: 0 0 12px rgba(255, 255, 255, 0.7), 0 0 24px rgba(255, 255, 255, 0.5);
-                transition: all 0.3s ease;
-            ">
-                🏠
-            </button>
-        </a>
-        """,
-        unsafe_allow_html=True
-    )
+        st.markdown(
+            """
+            <a href="?page=home" style="text-decoration: none;">
+                <button style="
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background-color: white;
+                    color: black;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 22px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 0 12px rgba(255, 255, 255, 0.7), 0 0 24px rgba(255, 255, 255, 0.5);
+                    transition: all 0.3s ease;
+                ">
+                    🏠
+                </button>
+            </a>
+            """,
+            unsafe_allow_html=True
+        )
 
     # Load data
     stats_df = cached_load_director_stats()
@@ -307,6 +308,7 @@ def render():
          background-repeat: repeat;
          background-color: #111827; /* fallback background */
         }
+    </style>
 
     """, unsafe_allow_html=True)
 

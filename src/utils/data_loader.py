@@ -1,26 +1,30 @@
-import pandas as pd
 import os
-
-DATA_PATH = "data/processed"
-
-def load_director_stats():
-    """
-    Load the director_stats.csv file containing director-based statistics.
-    """
-    file_path = os.path.join(DATA_PATH, r"C:\Users\sampr\OneDrive\Documents\zenflix\data\processed\director_stats.csv")
-    try:
-        df = pd.read_csv(file_path)
-        return df
-    except FileNotFoundError:
-        raise FileNotFoundError(f"Missing file: {file_path}")
+import pandas as pd
 
 def load_movie_data():
     """
-    Load the movies_cleaned.csv file containing movie-level information.
+    Load processed movie data from CSV.
+    
+    Returns:
+        pd.DataFrame: DataFrame with movie data or empty DataFrame if file not found.
     """
-    file_path = os.path.join(DATA_PATH, r"C:\Users\sampr\OneDrive\Documents\zenflix\data\processed\movies_cleaned_final.csv")
-    try:
-        df = pd.read_csv(file_path)
-        return df
-    except FileNotFoundError:
-        raise FileNotFoundError(f"Missing file: {file_path}")
+    root_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    data_path = os.path.join(root_dir, "data", "processed", "movies_cleaned_final.csv")
+    if not os.path.exists(data_path):
+        print(f"File not found: {data_path}")
+        return pd.DataFrame()
+    return pd.read_csv(data_path)
+
+def load_director_stats():
+    """
+    Load processed director statistics data from CSV.
+    
+    Returns:
+        pd.DataFrame: DataFrame with director stats or empty DataFrame if file not found.
+    """
+    root_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    path = os.path.join(root_dir, "data", "processed", "director_stats.csv")
+    if not os.path.exists(path):
+        print(f"File not found: {path}")
+        return pd.DataFrame()
+    return pd.read_csv(path)

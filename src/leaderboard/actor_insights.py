@@ -1,27 +1,46 @@
 import pandas as pd
 from collections import Counter, defaultdict
 from ast import literal_eval
+from src.utils.data_loader import load_movie_data
 
-def load_movies_data(path):
+
+def safe_literal_eval(val):
     """
-    Loads the cleaned movies dataset and parses cast.
+    Safely evaluate a string representation of a Python literal.
+    Returns an empty list if evaluation fails or input is not a string.
     """
     try:
-        df = pd.read_csv(path)
-        df['cast'] = df['cast'].apply(lambda x: literal_eval(x) if isinstance(x, str) else [])
-        df['genres'] = df['genres'].apply(lambda x: literal_eval(x) if isinstance(x, str) else [])
-        return df
-    except FileNotFoundError:
-        print(f"File not found at {path}")
+        return literal_eval(val) if isinstance(val, str) else []
+    except Exception:
+        return []
+
+
+def load_movies_data():
+    """
+    Load movie data with 'cast' and 'genres' columns converted from strings to lists.
+    Uses centralized loader from utils for consistent path handling.
+    
+    Returns:
+        pd.DataFrame: Movie dataset with parsed cast and genres columns.
+    """
+    df = load_movie_data()
+    if df.empty:
         return pd.DataFrame()
 
-# === 1. load_actor_stats ===
-def load_actor_stats(path="data/processed/movies_cleaned_final.csv"):
+    df['cast'] = df['cast'].apply(safe_literal_eval)
+    df['genres'] = df['genres'].apply(safe_literal_eval)
+    return df
+
+
+def load_actor_stats():
     """
-    Loads actor statistics from the movie dataset.
-    Returns a DataFrame with actor-level aggregates.
+    Aggregate actor statistics from movie data.
+
+    Returns:
+        pd.DataFrame: Actor stats with number of movies, average rating, likes,
+                      frequent collaborators, top genres and movies, etc.
     """
-    df = load_movies_data(path)
+    df = load_movies_data()
     if df.empty:
         return pd.DataFrame()
 
@@ -72,37 +91,37 @@ def load_actor_stats(path="data/processed/movies_cleaned_final.csv"):
 
     return pd.DataFrame(records)
 
-# === 2. get_top_actors_by_rating ===
+
 def get_top_actors_by_rating(actor_df, top_n=5):
     """
-    Returns top actors based on average rating.
+    Get top actors sorted by average rating.
     """
     return actor_df.sort_values(by='avg_rating', ascending=False).head(top_n)
 
-# === 3. get_versatile_actors ===
+
 def get_versatile_actors(actor_df, top_n=5):
     """
-    Returns actors with highest number of unique genres.
+    Get actors with most diverse genre involvement.
     """
     return actor_df.sort_values(by='unique_genres', ascending=False).head(top_n)
 
-# === 4. get_most_liked_actors ===
+
 def get_most_liked_actors(actor_df, top_n=5):
     """
-    Returns actors based on total likes and 5-star count.
+    Get actors with highest likes and five-star counts.
     """
     return actor_df.sort_values(by=["likes", "five_star_count"], ascending=False).head(top_n)
 
-# === 5. get_most_frequent_collaborators ===
+
 def get_most_frequent_collaborators(actor_df, top_n=5):
     """
-    Returns actors based on most frequent co-stars.
+    Get actors with most frequent collaborators.
     """
     return actor_df[actor_df['frequent_costar'] != "N/A"].sort_values(by="shared_movies", ascending=False).head(top_n)
 
-# === OPTIONAL: CLI Debugging ===
+
 if __name__ == "__main__":
-    df_stats = load_actor_stats("data/processed/movies_cleaned_final.csv")
+    df_stats = load_actor_stats()
     print(df_stats.head(10))
     print("\nTop Rated:\n", get_top_actors_by_rating(df_stats))
     print("\nVersatile:\n", get_versatile_actors(df_stats))
