@@ -97,9 +97,9 @@ st.markdown(
 
     /* Exact positions for larger screens */
     .popcorn1 {{ top: -35px; left: -10px; }}
-    .popcorn2 {{ top: -90px; left: 90px; }}
-    .popcorn3 {{ top: -120px; left: 180px; }}
-    .popcorn4 {{ top: -80px; left: 270px; }}
+    .popcorn2 {{ top: -90px; left: 85px; }}
+    .popcorn3 {{ top: -125px; left: 175px; }}
+    .popcorn4 {{ top: -85px; left: 270px; }}
 
     .title-container {{
         margin-top: 80px;
