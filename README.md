@@ -58,9 +58,9 @@ pip install -r requirements.txt
 
 # 4. Launch the app
 streamlit run streamlit_app.py
+```
 
-
-💡 Future Add-ons
+💡 Future Add-ons:
 🎞️ Auto-trailer fetch via YouTube API
 🧭 Interactive timeline of watched films
 💬 Chatbot that reacts to your mood
@@ -69,9 +69,7 @@ streamlit run streamlit_app.py
 🙋‍♂️ Meet the Creator
 Samprity Singha
 🎓 B.Tech Engineer | 🎨 Creative Coder | 🎬 Movie Buff
-🔗 LinkedIn | 💌 sampritysingha@gmail.com
-
-Built with a thermistor, some Spotify vibes, a lot of late nights & infinite popcorn. 🍿
+🔗 LinkedIn | 💌 sampritysingha29@gmail.com
 
 📜 License
 MIT License.
