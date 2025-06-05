@@ -67,8 +67,8 @@ streamlit run streamlit_app.py
 
 ## 🌱 Future Add-ons
 
-- 🎞️ Auto-trailer fetch via YouTube API  
-- 🧭 Interactive timeline of watched films  
+- 🎞️ Movie watch links and Auto-trailer fetch via YouTube API  
+- 🧭 Interactive timeline of watched films and option to create a watchlist
 - 💬 Chatbot that reacts to your mood  
 - 📤 Social sharing of “Which Movie Are You?” results  
 
@@ -79,6 +79,7 @@ streamlit run streamlit_app.py
 **Samprity Singha**  
 🎓 B.Tech Engineer | 🎨 Creative Coder | 🎬 Movie Buff  
 📫 [sampritysingha29@gmail.com](mailto:sampritysingha29@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-SampritySingha-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/sampritysingha29)
 
 ---
 
